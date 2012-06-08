@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <h:form id="personform">
+        <h:panelGrid columns="3">
+
+            <h:outputText value="#{msg.blogSubjectLabel}" />
+            <h:inputText id="subject" value="#{blogBean.blog.subject}" size="55">
+                <f:validateRequired />
+            </h:inputText>
+            <h:messages for="subject" style="color:red" />
+            
+            <h:outputText value="#{msg.blogHeaderLabel}" />
+            <h:inputTextarea id="header" value="#{blogBean.blog.header}" cols="60" rows="15" />
+        </h:panelGrid>
+        
+        <h:commandButton value="#{msg.save}" action="#{blogBean.updateBlog}" />
+    </h:form>
+</ui:composition>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+
+    <ui:define name="content">
+        <p>
+            <h:form>
+            <h:dataTable value="#{blogBean.allBlogs}" var="item">
+                <f:facet name="header">#{msg.blogAllLabel}</f:facet>
+
+                <h:column>
+                    <f:facet name="header">#{msg.blogSubjectLabel}</f:facet>
+                    <h:commandLink value="#{item.subject}" action="#{blogBean.showBlog}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.blogHeaderLabel}</f:facet>
+                    #{item.header}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">#{msg.action}</f:facet>
+                    <h:commandLink value="#{msg.actionEdit}" action="#{blogBean.editBlog}"/>, 
+                    <h:commandLink value="#{msg.actionDelete}" action="#{blogBean.deleteBlog}"/>
+                </h:column>
+            </h:dataTable>
+            <p>
+                <h:commandLink value="#{msg.linkAddBlog}" action="#{blogBean.addBlog}" />
+            </p>
+            </h:form>
+        </p>
+    </ui:define>
+</ui:composition>
